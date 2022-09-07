@@ -1,11 +1,7 @@
-import paper from '../images/icon-paper.svg';
-import scissors from '../images/icon-scissors.svg';
-import rock from '../images/icon-rock.svg';
-import triangle from '../images/bg-triangle.svg';
-import GameOption from './GameOption';
-import { useEffect } from 'react';
+import { useEffect } from "react";
 
 function Results({
+  setWinner,
   housePick,
   userPick,
   setOver,
@@ -19,17 +15,20 @@ function Results({
   useEffect(() => {
     if (isWinner) {
       setScore(score + 1);
-      localStorage.setItem('score', score);
+      localStorage.setItem("score", score);
     } else if (!isDraw) {
+      // setWinner(-1);
       setScore(score - 1);
-      localStorage.setItem('score', score);
+      localStorage.setItem("score", score);
+    } else {
+      // setWinner(0);
     }
   }, []);
   return (
     <>
-      <div className='flex justify-center items-center flex-col w-full  h-[30%] py-20'>
-        <div className='font-bold text-3xl uppercase tracking-widest my-3'>
-          {isWinner ? 'You win' : isDraw ? 'DRAW' : 'you lose'}
+      <div className="flex justify-center items-center flex-col w-full  h-[30%]  ">
+        <div className="font-bold text-5xl sm:text-3xl uppercase tracking-widest my-3 sm:my-1">
+          {isWinner ? "You win" : isDraw ? "DRAW" : "you lose"}
         </div>
         <button
           onClick={() => {
@@ -37,7 +36,7 @@ function Results({
             setUserPick(null);
             setOver(false);
           }}
-          className='text-[#3B4363] w-32 bg-white rounded-lg text-xs px-3 py-1 uppercase tracking-wider'
+          className="text-[#3B4363] w-52 sm:w-36 bg-white rounded-lg text-md px-3 py-3 sm:py-2 uppercase tracking-wider hover:bg-[#3B4363] hover:text-white"
         >
           play again
         </button>

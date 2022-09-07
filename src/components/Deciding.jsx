@@ -36,7 +36,6 @@ function Deciding({
       clearTimeout(timer);
     };
   }, []);
-  console.log("winner>", winner);
   if (housePick) {
     houseIcon = housePick === 1 ? scissors : housePick === 2 ? paper : rock;
     houseColor =

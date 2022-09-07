@@ -1,16 +1,18 @@
 import logo from "./images/logo.svg";
 import NewGame from "./components/NewGame";
 import Deciding from "./components/Deciding";
-import Results from "./components/Results";
 import { useState } from "react";
+import Rules from "./components/Rules";
 
 function App() {
   const [score, setScore] = useState(() => +localStorage.getItem("score") || 0);
   const [userPick, setUserPick] = useState(null);
   const [housePick, setHousePick] = useState(null);
+  const [showRules, setShowRules] = useState(false);
   // const [over, setOver] = useState(false);
   return (
     <>
+      {showRules && <Rules setShowRules={setShowRules} />}
       <div
         className=" h-screen w-screen text-white"
         style={{
@@ -62,7 +64,10 @@ function App() {
           )} */}
         </div>
         <div className="h-[10%] flex justify-center sm:justify-end items-center">
-          <button className="sm:mr-4 uppercase tracking-widest border-[#606E85] rounded-[0.3rem] border-[1px] px-4 py-1 text-[0.7rem] hover:bg-white hover:bg-opacity-10">
+          <button
+            onClick={() => setShowRules(true)}
+            className="sm:mr-4 uppercase tracking-widest border-[#606E85] rounded-[0.3rem] border-[1px] px-4 py-1 text-[0.7rem] hover:bg-white hover:bg-opacity-10"
+          >
             rules
           </button>
         </div>

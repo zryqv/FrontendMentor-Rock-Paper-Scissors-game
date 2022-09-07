@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 
 function Results({
-  setWinner,
   housePick,
   userPick,
   setOver,
@@ -17,11 +16,9 @@ function Results({
       setScore(score + 1);
       localStorage.setItem("score", score);
     } else if (!isDraw) {
-      // setWinner(-1);
       setScore(score - 1);
       localStorage.setItem("score", score);
     } else {
-      // setWinner(0);
     }
   }, []);
   return (
